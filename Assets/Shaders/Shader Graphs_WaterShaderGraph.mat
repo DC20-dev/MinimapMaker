@@ -70,7 +70,7 @@ Material:
     - _AlphaToMask: 0
     - _AlphaToMaskInspectorValue: 0
     - _BlendMode: 0
-    - _ColorVariation: 0.7
+    - _ColorVariation: 0.487
     - _ConservativeDepthOffsetEnable: 0
     - _CullMode: 2
     - _CullModeForward: 2
@@ -81,6 +81,7 @@ Material:
     - _DstBlend: 10
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
+    - _FoamPresence: 1
     - _MaxWaveHeight: 0.5
     - _NoiseScale: 5
     - _OpaqueCullMode: 2
