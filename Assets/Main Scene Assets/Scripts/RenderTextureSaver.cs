@@ -6,8 +6,6 @@ using System.IO;
 
 public class RenderTextureSaver : MonoBehaviour
 {
-    public bool Screenshot;
-
     Camera cam;
     Texture2D toExport;
     int texNum = 0, screenshotLayerMask, layermaskWithUI;
@@ -30,15 +28,6 @@ public class RenderTextureSaver : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (!Screenshot) return;
-
-        Screenshot = false;
-
-        TakeScreenshot();
-    }
 
     void TakeScreenshot()
     {
@@ -64,5 +53,10 @@ public class RenderTextureSaver : MonoBehaviour
         }
 
         return tempFilename;
+    }
+
+    public void Screenshot()
+    {
+        TakeScreenshot();
     }
 }
