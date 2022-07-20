@@ -65,6 +65,23 @@ public class MapGeneration : MonoBehaviour
     }
     #endregion
 
+    public void GenerateMapOnClick()
+    {
+        InstantiateMap();
+    }
+
+    public void RefreshMapOnClick()
+    {
+        UpdateMap();
+    }
+
+    public void ClearMapOnClick()
+    {
+        MapRefreshEvent.Invoke();
+        ClearDetails();
+        ClearPools();
+    }
+
     void InstantiateMap()
 	{
         MapChangeEvent.Invoke();

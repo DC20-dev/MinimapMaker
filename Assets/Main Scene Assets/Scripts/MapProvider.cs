@@ -14,6 +14,7 @@ public class MapProvider : MonoBehaviour
 	[Range(0,1)]
 	public float TreesPercentage = 0.4f;
 	public int RandomizerMaxValue;
+
 	//Map contains:
 	//	in R channel = HeightMap for the generation
 	//	in G channel = House Spawn Probabilities
