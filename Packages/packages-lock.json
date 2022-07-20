@@ -98,7 +98,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.probuilder": {
-      "version": "5.0.3",
+      "version": "5.0.6",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -141,6 +141,17 @@
       "source": "builtin",
       "dependencies": {
         "com.unity.render-pipelines.core": "12.1.4"
+      }
+    },
+    "com.unity.render-pipelines.universal": {
+      "version": "12.1.4",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.mathematics": "1.2.1",
+        "com.unity.burst": "1.5.0",
+        "com.unity.render-pipelines.core": "12.1.4",
+        "com.unity.shadergraph": "12.1.4"
       }
     },
     "com.unity.searcher": {

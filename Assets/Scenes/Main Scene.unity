@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 3435.5508, g: 2387.3887, b: 1897.125, a: 1}
+  m_IndirectSpecularColor: {r: 3441.088, g: 2388.413, b: 1892.1289, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5172,7 +5172,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 7
+  m_AdditionalShaderChannelsFlag: 31
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -15028,13 +15028,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: TerrainWithTopSlab
       objectReference: {fileID: 0}
+    - target: {fileID: 7109234061681211580, guid: d74cacd9bac3da44da85672cac3efa78, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8823302615552690317, guid: d74cacd9bac3da44da85672cac3efa78, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8823302615552690317, guid: d74cacd9bac3da44da85672cac3efa78, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.505283
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8823302615552690317, guid: d74cacd9bac3da44da85672cac3efa78, type: 3}
       propertyPath: m_LocalPosition.y
@@ -15042,7 +15046,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8823302615552690317, guid: d74cacd9bac3da44da85672cac3efa78, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.08037
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8823302615552690317, guid: d74cacd9bac3da44da85672cac3efa78, type: 3}
       propertyPath: m_LocalRotation.w
