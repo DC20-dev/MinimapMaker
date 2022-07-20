@@ -159,7 +159,7 @@ public class MapGeneration : MonoBehaviour
     /// </summary>
     /// <param name="type"></param>
     /// <param name="bottomBlock"></param>
-    void SetTerrainSlab(TerrainType newType, Transform bottomBlock, float delay, float r)
+    void SetTerrainSlab(TerrainType newType, Transform bottomBlock, float delay, float height)
 	{
         Transform slab = bottomBlock.GetChild(0);
         Material mat = slab.GetComponent<Renderer>().material;
@@ -167,42 +167,43 @@ public class MapGeneration : MonoBehaviour
         float val;
         Color newCol;
 
-        TweenCallback changeFloats = () =>
+        TweenCallback changeShader = () =>
         {
-            mat.SetFloat("_Metallic", 0);
-            mat.SetFloat("_Smoothness", 0);
-            mat.SetFloat("_ReceivesSSR", 0);
-            mat.SetFloat("ReceivesSSRTransparent", 0);
+            mat.SetFloat("_Dynamic", 0);
         };
 
         switch (newType)
 		{
 			case TerrainType.Water:
+                //
+                //Change this block to get the start color depending on the poisiton
+                //similar to the lerp done with the grass but with the height
+                //leave the actual color change to the shader itself
 				int rand = Random.Range(0, 3);
 				newCol = rand == 0 ? MIS.WaterDark : MIS.WaterMedium;
 				newCol = rand == 2 ? MIS.WaterLight : newCol;
-                 changeFloats = () => 
+                //
+                 changeShader = () => 
                     {
-                        mat.SetFloat("_Metallic", 0.5f);
-                        mat.SetFloat("_Smoothness", 1);
-                        mat.SetFloat("_ReceivesSSR", 1);
-                        mat.SetFloat("ReceivesSSRTransparent", 1);
+                        mat.SetFloat("_RandomTimeOffset", Random.Range(0f,10f));
+                        mat.SetFloat("_StartDepth", height);
+                        mat.SetFloat("_Dynamic", 1);
                     };
 
-                mat.DOColor(newCol, tweenTime).SetDelay(delay).OnComplete(changeFloats);
+                mat.DOColor(newCol, tweenTime).SetDelay(delay).OnComplete(changeShader);
 				break;
 			case TerrainType.Sand:
-                mat.DOColor(MIS.Sand, tweenTime).SetDelay(delay).OnComplete(changeFloats);
+                mat.DOColor(MIS.Sand, tweenTime).SetDelay(delay).OnComplete(changeShader);
                 break;
 			case TerrainType.Grass:
-                val = Mathf.InverseLerp(MIS.Transponder[2], MIS.Transponder[3], r*10);
+                val = Mathf.InverseLerp(MIS.Transponder[2], MIS.Transponder[3], height*10);
                 newCol = Color.Lerp(MIS.GrassGreen, MIS.GrassYellow, val);
-                mat.DOColor(newCol, tweenTime).SetDelay(delay).OnComplete(changeFloats);
+                mat.DOColor(newCol, tweenTime).SetDelay(delay).OnComplete(changeShader);
                 break;
 			case TerrainType.YellowGrass:
-                val = Mathf.Lerp(MIS.Transponder[2], MIS.Transponder[3], r * 10);
+                val = Mathf.Lerp(MIS.Transponder[2], MIS.Transponder[3], height * 10);
                 newCol = Color.Lerp(MIS.GrassGreen, MIS.GrassYellow, val);
-                mat.DOColor(newCol, tweenTime).SetDelay(delay).OnComplete(changeFloats);
+                mat.DOColor(newCol, tweenTime).SetDelay(delay).OnComplete(changeShader);
                 break;
 			default:
 				break;
