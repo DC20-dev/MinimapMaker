@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DefaultHDRPAsset
   m_EditorClassIdentifier: 
   m_RenderPipelineSettings:
-    supportShadowMask: 0
+    supportShadowMask: 1
     supportSSR: 1
     supportSSRTransparent: 1
     supportSSAO: 1
@@ -33,12 +33,12 @@ MonoBehaviour:
     colorBufferFormat: 74
     supportCustomPass: 0
     customBufferFormat: 12
-    supportedLitShaderMode: 3
+    supportedLitShaderMode: 2
     planarReflectionResolution:
       m_Values: 000100000004000000040000
       m_SchemaId:
         m_Id: With3Levels
-    supportDecals: 1
+    supportDecals: 0
     supportDecalLayers: 0
     supportSurfaceGradient: 0
     decalNormalBufferHP: 0
@@ -140,6 +140,7 @@ MonoBehaviour:
       singlePass: 1
       occlusionMesh: 1
       cameraJitter: 0
+      allowMotionBlur: 1
     postProcessQualitySettings:
       NearBlurSampleCount: 030000000400000005000000
       NearBlurMaxRadius:
@@ -161,7 +162,7 @@ MonoBehaviour:
       ChromaticAberrationMaxSamples: 03000000060000000c000000
     lightSettings:
       useContactShadow:
-        m_Values: 000101
+        m_Values: 010101
         m_SchemaId:
           m_Id: 
     maximumLODLevel:
