@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DefaultHDRPAsset
   m_EditorClassIdentifier: 
   m_RenderPipelineSettings:
-    supportShadowMask: 0
+    supportShadowMask: 1
     supportSSR: 1
     supportSSRTransparent: 1
     supportSSAO: 1
@@ -26,6 +26,9 @@ MonoBehaviour:
     supportVolumetrics: 1
     supportVolumetricClouds: 0
     supportLightLayers: 0
+    supportWater: 0
+    waterSimulationResolution: 128
+    waterCPUSimulation: 0
     supportDistortion: 1
     supportTransparentBackface: 1
     supportTransparentDepthPrepass: 1
@@ -38,17 +41,23 @@ MonoBehaviour:
       m_Values: 000100000004000000040000
       m_SchemaId:
         m_Id: With3Levels
-    supportDecals: 1
+    cubeReflectionResolution:
+      m_Values: 000100000002000000040000
+      m_SchemaId:
+        m_Id: With3Levels
+    supportDecals: 0
     supportDecalLayers: 0
     supportSurfaceGradient: 0
     decalNormalBufferHP: 0
-    msaaSampleCount: 1
+    msaaSampleCount: 8
     supportMotionVectors: 1
     supportRuntimeAOVAPI: 0
     supportDitheringCrossFade: 1
     supportTerrainHole: 0
-    supportProbeVolume: 0
+    lightProbeSystem: 0
     probeVolumeMemoryBudget: 1024
+    probeVolumeBlendingMemoryBudget: 128
+    supportProbeVolumeStreaming: 0
     probeVolumeSHBands: 1
     supportRayTracing: 0
     supportedRayTracingMode: 3
@@ -60,8 +69,13 @@ MonoBehaviour:
       planarReflectionAtlasSize: 1024
       reflectionProbeCacheSize: 32
       reflectionCubemapSize: 256
+      maxEnvLightsOnScreen: 32
       reflectionCacheCompressed: 1
       reflectionProbeFormat: 74
+      reflectionProbeTexCacheSize: 4096
+      reflectionProbeTexLastValidCubeMip: 3
+      reflectionProbeTexLastValidPlanarMip: 0
+      reflectionProbeDecreaseResToFit: 1
       skyReflectionSize: 512
       skyLightingOverrideLayerMask:
         serializedVersion: 2
@@ -70,9 +84,9 @@ MonoBehaviour:
       maxDirectionalLightsOnScreen: 16
       maxPunctualLightsOnScreen: 512
       maxAreaLightsOnScreen: 64
-      maxEnvLightsOnScreen: 32
-      maxDecalsOnScreen: 512
+      maxCubeReflectionOnScreen: 32
       maxPlanarReflectionOnScreen: 16
+      maxDecalsOnScreen: 512
       maxLightsPerClusterCell: 16
       maxLocalVolumetricFogSize: 32
       maxLocalVolumetricFogOnScreen: 64
@@ -80,6 +94,7 @@ MonoBehaviour:
       maxShadowRequests: 128
       directionalShadowsDepthBits: 16
       shadowFilteringQuality: 1
+      areaShadowFilteringQuality: 0
       punctualLightShadowAtlas:
         shadowAtlasResolution: 16384
         shadowAtlasDepthBits: 32
@@ -90,6 +105,7 @@ MonoBehaviour:
         useDynamicViewportRescale: 0
       cachedPunctualLightShadowAtlas: 16384
       cachedAreaLightShadowAtlas: 2048
+      allowDirectionalMixedCachedShadows: 0
       shadowResolutionDirectional:
         m_Values: 00010000000200000004000000080000
         m_SchemaId:
@@ -122,8 +138,11 @@ MonoBehaviour:
       useMipBias: 0
       enableDLSS: 1
       DLSSPerfQualitySetting: 1
+      DLSSInjectionPoint: 0
       DLSSUseOptimalSettings: 1
       DLSSSharpness: 0.5
+      fsrOverrideSharpness: 0
+      fsrSharpness: 0.92
       maxPercentage: 100
       minPercentage: 60
       dynResType: 1
@@ -140,6 +159,7 @@ MonoBehaviour:
       singlePass: 1
       occlusionMesh: 1
       cameraJitter: 0
+      allowMotionBlur: 1
     postProcessQualitySettings:
       NearBlurSampleCount: 030000000400000005000000
       NearBlurMaxRadius:
@@ -154,6 +174,7 @@ MonoBehaviour:
       DoFResolution: 040000000200000002000000
       DoFHighQualityFiltering: 000001
       DoFPhysicallyBased: 000000
+      LimitManualRangeNearBlur: 000000
       MotionBlurSampleCount: 04000000080000000c000000
       BloomRes: 040000000200000002000000
       BloomHighQualityFiltering: 000101
@@ -161,7 +182,7 @@ MonoBehaviour:
       ChromaticAberrationMaxSamples: 03000000060000000c000000
     lightSettings:
       useContactShadow:
-        m_Values: 000101
+        m_Values: 010101
         m_SchemaId:
           m_Id: 
     maximumLODLevel:
@@ -276,7 +297,7 @@ MonoBehaviour:
     - format: 0
       sizeInMegaBytes: 128
   m_UseRenderGraph: 1
-  m_Version: 21
+  m_Version: 22
   m_ObsoleteFrameSettings:
     overrides: 0
     enableShadow: 0
