@@ -1,6 +1,9 @@
 # MinimapMaker
 
+
 [![Made with Unity](https://img.shields.io/badge/Made%20with-Unity-57b9d3.svg?style=flat&logo=unity)](https://unity3d.com)
+
+
 A stylised random tile-based map generator.
 This is a showcase and a very relaxing thing to watch, especially when there is a very nice detailed map ;)
 
